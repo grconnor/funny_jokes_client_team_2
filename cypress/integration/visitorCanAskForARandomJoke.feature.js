@@ -13,7 +13,7 @@ describe("Visitor can press a button to get a randome joke", () => {
   });
 
   it("visitor won't see upvotes before asking for a joke", () => {
-    cy.get("[data-cy='upvotes']").should('not.exist')
+    cy.get("[data-cy='upvotes']").should("not.exist");
   });
 
   it("displays joke", () => {
