@@ -8,19 +8,16 @@ describe("Visitor can press a button to get a randome joke", () => {
     });
     cy.visit("/");
   });
-  it("visitor can see the button", () => {
-    cy.get('[data-cy="joke-getter"]').should(
-      "contain",
-      "Get the joke you need right now"
-    );
-    cy.get('[data-cy="joke-getter"]').click();
+  it("visitor can see the page title", () => {
+    cy.get('[data-cy="title"]').should("contain", "Funny Jokes");
   });
   it("shows joke", () => {
+    cy.get('[data-cy="joke-getter"]').click();
     cy.get("[data-cy='random-joke']").within(() => {
       cy.contains(
         "Why do trees seem suspicious on sunny days? Dunno, they're just a bit shady."
       );
-      cy.contains("upvotes");
+      cy.get("[data-cy='upvotes']").should("contain", "upvotes: 5");
     });
   });
 });
