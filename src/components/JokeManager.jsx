@@ -4,11 +4,12 @@ import { getJoke } from "../modules/joke";
 class JokeManager extends Component {
   state = {
     currentJoke: {},
+    displayJoke: false
   };
 
   getRandomJoke = async () => {
     let result = await getJoke();
-    this.setState({ currentJoke: result });
+    this.setState({ currentJoke: result, displayJoke: true });
   };
 
   render() {
@@ -20,10 +21,12 @@ class JokeManager extends Component {
         <button onClick={this.getRandomJoke} data-cy="joke-getter">
           Get the joke you need right now
         </button>
-        <div data-cy="random-joke">
+        {this.state.displayJoke && (
+          <div data-cy="random-joke">
           <p>{currentJokeContent}</p>
           <p data-cy="upvotes">upvotes: {currentJokeUpvote}</p>
         </div>
+        )}
       </>
     );
   }
