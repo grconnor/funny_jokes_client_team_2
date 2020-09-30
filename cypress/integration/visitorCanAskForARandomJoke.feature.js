@@ -8,9 +8,6 @@ describe("Visitor can press a button to get a randome joke", () => {
     });
     cy.visit("/");
   });
-  it("visitor can see the page title", () => {
-    cy.get('[data-cy="title"]').should("contain", "Funny Jokes");
-  });
 
   it("visitor won't see upvotes before asking for a joke", () => {
     cy.get("[data-cy='upvotes']").should("not.exist");

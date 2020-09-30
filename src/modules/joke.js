@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const getJoke = async () => {
-  let currentJoke = await axios.get("/jokeGetter");
-  return currentJoke.data;
+  let response = await axios.get("/jokeGetter");
+  return response.data;
 };
 
 export { getJoke };
