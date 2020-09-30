@@ -11,7 +11,12 @@ describe("Visitor can press a button to get a randome joke", () => {
   it("visitor can see the page title", () => {
     cy.get('[data-cy="title"]').should("contain", "Funny Jokes");
   });
-  it("shows joke", () => {
+
+  it("visitor won't see upvotes before asking for a joke", () => {
+    cy.get("[data-cy='upvotes']").should('not.exist')
+  });
+
+  it("displays joke", () => {
     cy.get('[data-cy="joke-getter"]').click();
     cy.get("[data-cy='random-joke']").within(() => {
       cy.contains(
