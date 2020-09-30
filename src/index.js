@@ -13,9 +13,6 @@ if (process.env.NODE_ENV === "production") {
 }
 axios.defaults.baseURL = apiUrl;
 
-ReactDOM.render(
-    <App />,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));
 
 serviceWorker.unregister();

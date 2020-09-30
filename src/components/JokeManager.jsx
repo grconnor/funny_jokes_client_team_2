@@ -6,7 +6,7 @@ class JokeManager extends Component {
     currentJoke: {},
   };
 
-  getRandomJoke = async () => {debugger
+  getRandomJoke = async () => {
     let result = await getJoke();
     this.setState({ currentJoke: result });
   };
@@ -14,7 +14,7 @@ class JokeManager extends Component {
   render() {
     let currentJokeContent = this.state.currentJoke.content;
     let currentJokeUpvote = this.state.currentJoke.upvotes;
-  
+
     return (
       <>
         <button onClick={this.getRandomJoke} data-cy="joke-getter">
@@ -22,7 +22,7 @@ class JokeManager extends Component {
         </button>
         <div data-cy="random-joke">
           <p>{currentJokeContent}</p>
-          <p data-cy='upvotes'>upvotes: {currentJokeUpvote}</p>
+          <p data-cy="upvotes">upvotes: {currentJokeUpvote}</p>
         </div>
       </>
     );
