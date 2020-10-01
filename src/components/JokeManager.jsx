@@ -12,6 +12,9 @@ class JokeManager extends Component {
     this.setState({ currentJoke: result, displayJoke: true });
   };
 
+
+
+
   render() {
     let currentJokeContent = this.state.currentJoke.content;
     let currentJokeUpvote = this.state.currentJoke.upvotes;
@@ -25,6 +28,7 @@ class JokeManager extends Component {
           <div data-cy="random-joke">
             <p>{currentJokeContent}</p>
             <p data-cy="upvotes">upvotes: {currentJokeUpvote}</p>
+            {this.props.authenticated && <button onClick={this.positiveVote}> Vote + </button>}
           </div>
         )}
       </>

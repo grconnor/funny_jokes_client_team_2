@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <>
         <h1 data-cy="title">Funny Jokes</h1>
-        <JokeManager />
+        <JokeManager authenticated= {this.state.authenticated}/>
         {renderLogin}
       </>
     );

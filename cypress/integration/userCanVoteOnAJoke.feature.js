@@ -9,6 +9,20 @@ describe("Authenticated user can vote on a Joke", () => {
         uid: "user@mail.com",
       },
     });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v1/joke",
+      response: "fixture:randomJokeResponse.json",
+    });
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/v1/votes",
+      response: "fixture:userCanVote.json",
+      headers: {
+        uid: "user@mail.com",
+      },
+    });
+
     cy.visit("/");
 
     cy.get('[data-cy="login"]').click();
@@ -19,21 +33,27 @@ describe("Authenticated user can vote on a Joke", () => {
     });
     cy.get('[data-cy="message"]').should("contain", "Hi user@mail.com");
   });
-  
-  it('User can see the vote button', () => {
-    cy.get('[data-cy="vote-button"]').should("exist");
-  });
 
-  describe("Authenticated user can vote on a Joke", () =>{
-    cy.route({
-      method: "POST",
-      url: "http://localhost:3000/api/v1/votes",
-      response: "fixture:userCanVote.json",
-      headers: {
-        uid: "user@mail.com",
-      },
+
+  it("User can see the vote button", () => {
+
+    cy.get("[data-cy='upvotes']").should("not.exist");
+    cy.get('[data-cy="joke"]').click();
+    cy.get("[data-cy='random-joke']").within(() => {
+      cy.contains(
+        "Why do trees seem suspicious on sunny days? Dunno, they're just a bit shady."
+      );
+      cy.get("[data-cy='upvotes']").should("contain", "upvotes: 5");
     });
+
+
+    cy.get('[data-cy="vote-button"]').should("exist");
+
     cy.get('[data-cy="vote-button"]').click();
-    cy.get('[data-cy="vote-message"]').should("contain", "Your vote has been submitted");
+    cy.get('[data-cy="upvote"]').should("contain", 6);
+    cy.get('[data-cy="vote-message"]').should(
+      "contain",
+      "Your vote has been submitted"
+    );
   });
 });
