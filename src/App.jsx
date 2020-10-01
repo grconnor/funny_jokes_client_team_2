@@ -35,17 +35,18 @@ class App extends Component {
           <>
             <button
               id="login"
+              data-cy="login"
               onClick={() => this.setState({ showLoginForm: true })}
             >
               Login
             </button>
-            <p>{message}</p>
+            <p data-cy="message">{message}</p>
           </>
         );
         break;
       case authenticated:
         renderLogin = (
-          <p>Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
+          <p data-cy="message">Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
         );
         break;
       default:

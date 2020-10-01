@@ -18,7 +18,7 @@ class JokeManager extends Component {
 
     return (
       <>
-        <button onClick={this.getRandomJoke} data-cy="joke-getter">
+        <button onClick={this.getRandomJoke} data-cy="joke">
           Get the joke you need right now
         </button>
         {this.state.displayJoke && (
