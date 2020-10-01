@@ -1,9 +1,9 @@
 import React from 'react'
 
-const LoginForm = () => {
+const LoginForm = ({ submitFormHandler }) => {
   return (
     <div>
-      <form data-cy="login-form">
+      <form data-cy="login-form" onSubmit={submitFormHandler}>
         <label >
           email:
         </label>
