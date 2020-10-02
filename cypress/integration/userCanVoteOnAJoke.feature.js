@@ -29,9 +29,8 @@ describe("Authenticated user can vote on a Joke", () => {
     cy.get('[data-cy="login-form"]').within(() => {
       cy.get('[data-cy="email"]').type("user@mail.com");
       cy.get('[data-cy="password"]').type("password");
-      cy.get('[data-cy="button"]').contains("Submit").click();
+      cy.get('[data-cy="button"]').click();
     });
-    cy.get('[data-cy="message"]').should("contain", "Hi user@mail.com");
   });
 
 
