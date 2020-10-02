@@ -1,5 +1,5 @@
 import axios from "axios";
-const positiveVote = async () => {
+const positiveVote = async (jokeId) => {
   let headers = sessionStorage.getItem("credentials");
   headers = JSON.parse(headers);
   headers = {
@@ -10,11 +10,12 @@ const positiveVote = async () => {
   try {
     let response = await axios.post(
       "/votes",
-      {},
+      {params: jokeId },
       {
         headers: headers,
       }
     );
+    
     return response.data;
   } catch (err) {
     console.error(err);
