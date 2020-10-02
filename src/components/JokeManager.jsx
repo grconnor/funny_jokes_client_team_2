@@ -7,6 +7,7 @@ class JokeManager extends Component {
     currentJoke: {},
     displayJoke: false,
     voteSaved: false,
+    voteMessage: ""
   };
 
   getRandomJoke = async () => {
@@ -17,8 +18,9 @@ class JokeManager extends Component {
   voteSaved = async () => {
     let voteSaved = await positiveVote()
     this.setState({
-      currentJoke: voteSaved,
-      voteSaved: true
+      currentJoke: voteSaved.joke,
+      voteSaved: true,
+      voteMessage: voteSaved.message
     });
   };
 
@@ -40,7 +42,7 @@ class JokeManager extends Component {
               <button data-cy="vote-button" onClick={this.voteSaved}>
                 Vote + </button>
             ) : (
-                <p data-cy="vote-message">Your vote has been submitted</p>
+            <p data-cy="vote-message"> { this.state.voteMessage }</p>
               )}
           </div>
         )}

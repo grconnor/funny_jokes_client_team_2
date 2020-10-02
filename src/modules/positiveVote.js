@@ -14,7 +14,7 @@ const positiveVote = async () => {
       {
         headers: headers,
       }
-    );
+    );debugger
     return response.data;
   } catch (err) {
     console.error(err);
