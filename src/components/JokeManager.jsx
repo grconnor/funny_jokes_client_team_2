@@ -16,7 +16,7 @@ class JokeManager extends Component {
   };
 
   voteSaved = async () => {
-    let voteSaved = await positiveVote()
+    let voteSaved = await positiveVote(this.state.currentJoke.id)
     this.setState({
       currentJoke: voteSaved.joke,
       voteSaved: true,
