@@ -17,7 +17,7 @@ describe("Authenticated user can vote on a Joke", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v1/votes",
-      response: "fixture:userCanVote.json",
+      response: "fixture:voteJokeResponse.json",
       headers: {
         uid: "user@mail.com",
       },
@@ -43,7 +43,7 @@ describe("Authenticated user can vote on a Joke", () => {
       cy.contains(
         "Why do trees seem suspicious on sunny days? Dunno, they're just a bit shady."
       );
-      cy.get("[data-cy='upvotes']").should("contain", "upvotes: 5");
+      cy.get("[data-cy='upvote']").should("contain", "upvotes: 5");
     });
 
 

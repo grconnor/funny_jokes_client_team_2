@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getJoke } from "../modules/joke";
+import { positiveVote } from "../modules/positiveVote"
 
 class JokeManager extends Component {
   state = {
@@ -13,12 +14,12 @@ class JokeManager extends Component {
     this.setState({ currentJoke: result, displayJoke: true });
   };
 
-  voteSaved = async() => {
+  voteSaved = async () => {
     let voteSaved = await positiveVote()
-      this.setState({
-        currentJoke: voteSaved,
-        voteSaved: true
-      });
+    this.setState({
+      currentJoke: voteSaved,
+      voteSaved: true
+    });
   };
 
 
@@ -34,15 +35,13 @@ class JokeManager extends Component {
         {this.state.displayJoke && (
           <div data-cy="random-joke">
             <p>{currentJokeContent}</p>
-            <p data-cy="upvotes">upvotes: {currentJokeUpvote}</p>
+            <p data-cy="upvote">upvotes: {currentJokeUpvote}</p>
             {this.props.authenticated && !this.state.voteSaved ? (
               <button data-cy="vote-button" onClick={this.voteSaved}>
                 Vote + </button>
             ) : (
                 <p data-cy="vote-message">Your vote has been submitted</p>
-              )};
-
-
+              )}
           </div>
         )}
       </>
