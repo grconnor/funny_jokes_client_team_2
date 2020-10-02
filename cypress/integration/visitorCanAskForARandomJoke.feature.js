@@ -19,7 +19,7 @@ describe("Visitor can press a button to get a random joke", () => {
       cy.contains(
         "Why do trees seem suspicious on sunny days? Dunno, they're just a bit shady."
       );
-      cy.get("[data-cy='upvotes']").should("contain", "upvotes: 5");
+      cy.get("[data-cy='upvote']").should("contain", "upvotes: 5");
     });
   });
 });
