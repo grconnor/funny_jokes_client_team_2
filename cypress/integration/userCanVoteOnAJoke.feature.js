@@ -33,9 +33,7 @@ describe("Authenticated user can vote on a Joke", () => {
     });
   });
 
-
   it("User can see the vote button", () => {
-
     cy.get("[data-cy='upvotes']").should("not.exist");
     cy.get('[data-cy="joke"]').click();
     cy.get("[data-cy='random-joke']").within(() => {
@@ -44,7 +42,6 @@ describe("Authenticated user can vote on a Joke", () => {
       );
       cy.get("[data-cy='upvote']").should("contain", "upvotes: 5");
     });
-
 
     cy.get('[data-cy="vote-button"]').should("exist");
 

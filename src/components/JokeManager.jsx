@@ -12,7 +12,7 @@ class JokeManager extends Component {
 
   getRandomJoke = async () => {
     let result = await getJoke();
-    this.setState({ currentJoke: result, displayJoke: true });
+    this.setState({ currentJoke: result, displayJoke: true, voteSaved: false });
   };
 
   voteSaved = async () => {

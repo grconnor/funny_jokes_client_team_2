@@ -10,18 +10,16 @@ const positiveVote = async (jokeId) => {
   try {
     let response = await axios.post(
       "/votes",
-      {jokeId },
+      { jokeId },
       {
         headers: headers,
       }
     );
-    debugger
     return response.data;
   } catch (err) {
-    
     console.error(err);
-    alert("Sorry, we are not that funny, we don't have that joke!" );
-    return false
+    alert("Sorry, we are not that funny, we don't have that joke!");
+    return false;
   }
 };
 export { positiveVote };
