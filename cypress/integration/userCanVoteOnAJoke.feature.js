@@ -11,7 +11,7 @@ describe("Authenticated user can vote on a Joke", () => {
     });
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/v1/joke",
+      url: "http://localhost:3000/api/v1/jokes",
       response: "fixture:randomJokeResponse.json",
     });
     cy.route({
