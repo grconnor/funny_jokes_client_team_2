@@ -46,7 +46,9 @@ class App extends Component {
         break;
       case authenticated:
         renderLogin = (
-          <p data-cy="message">Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
+          <p data-cy="message">
+            Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}
+          </p>
         );
         break;
       default:
@@ -55,7 +57,7 @@ class App extends Component {
     return (
       <>
         <h1 data-cy="title">Funny Jokes</h1>
-        <JokeManager authenticated= {this.state.authenticated}/>
+        <JokeManager authenticated={this.state.authenticated} />
         {renderLogin}
       </>
     );

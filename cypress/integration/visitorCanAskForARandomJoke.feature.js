@@ -3,7 +3,7 @@ describe("Visitor can press a button to get a random joke", () => {
     cy.server();
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/v1/joke",
+      url: "http://localhost:3000/api/v1/jokes",
       response: "fixture:randomJokeResponse.json",
     });
     cy.visit("/");

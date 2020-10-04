@@ -1,29 +1,30 @@
 import React, { Component } from "react";
 import { getJoke } from "../modules/joke";
-import { positiveVote } from "../modules/positiveVote"
+import { positiveVote } from "../modules/positiveVote";
 
 class JokeManager extends Component {
   state = {
     currentJoke: {},
     displayJoke: false,
     voteSaved: false,
-    voteMessage: ""
+    voteMessage: "",
   };
 
   getRandomJoke = async () => {
     let result = await getJoke();
-    this.setState({ currentJoke: result, displayJoke: true });
+    this.setState({ currentJoke: result, displayJoke: true, voteSaved: false });
   };
 
   voteSaved = async () => {
-    let voteSaved = await positiveVote(this.state.currentJoke.id)
-    this.setState({
-      currentJoke: voteSaved.joke,
-      voteSaved: true,
-      voteMessage: voteSaved.message
-    });
+    let response = await positiveVote(this.state.currentJoke.id);
+    if (response !== false) {
+      this.setState({
+        currentJoke: response.joke,
+        voteSaved: true,
+        voteMessage: response.message,
+      });
+    }
   };
-
 
   render() {
     let currentJokeContent = this.state.currentJoke.content;
@@ -40,10 +41,11 @@ class JokeManager extends Component {
             <p data-cy="upvote">upvotes: {currentJokeUpvote}</p>
             {this.props.authenticated && !this.state.voteSaved ? (
               <button data-cy="vote-button" onClick={this.voteSaved}>
-                Vote + </button>
+                Vote +{" "}
+              </button>
             ) : (
-            <p data-cy="vote-message"> { this.state.voteMessage }</p>
-              )}
+              <p data-cy="vote-message"> {this.state.voteMessage}</p>
+            )}
           </div>
         )}
       </>
