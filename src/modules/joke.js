@@ -5,7 +5,7 @@ const getJoke = async () => {
   return response.data.jokes;
 };
 
-const saveJoke = async (jokeId, jokeContent) => {
+const saveJoke = async (joke_id, content) => {
   let headers = sessionStorage.getItem("credentials");
   headers = JSON.parse(headers);
   headers = {
@@ -16,7 +16,7 @@ const saveJoke = async (jokeId, jokeContent) => {
   try {
     let response = await axios.post(
       "/jokes",
-      { jokeId, jokeContent },
+      { joke_id, content },
       {
         headers: headers,
       }
@@ -29,7 +29,4 @@ const saveJoke = async (jokeId, jokeContent) => {
   }
 };
 
-
-
 export { getJoke, saveJoke };
-

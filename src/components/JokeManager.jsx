@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { getJoke, saveJoke } from "../modules/joke";
 import { positiveVote } from "../modules/positiveVote";
 
-
 class JokeManager extends Component {
   state = {
     currentJoke: {},
@@ -10,12 +9,17 @@ class JokeManager extends Component {
     voteSaved: false,
     voteMessage: "",
     jokeSaved: "",
-    savedJokeMessage: ""
+    savedJokeMessage: "",
   };
 
   getRandomJoke = async () => {
     let result = await getJoke();
-    this.setState({ currentJoke: result, displayJoke: true, voteSaved: false });
+    this.setState({
+      currentJoke: result,
+      displayJoke: true,
+      voteSaved: false,
+      jokeSaved: false,
+    });
   };
 
   voteSaved = async () => {
@@ -30,17 +34,17 @@ class JokeManager extends Component {
   };
 
   jokeSaved = async () => {
-    let response = await saveJoke(this.state.currentJoke.id, this.state.currentJoke.content);
+    let response = await saveJoke(
+      this.state.currentJoke.id,
+      this.state.currentJoke.content
+    );
     if (response !== false) {
       this.setState({
-        currentJoke: response.joke,
         jokeSaved: true,
         savedJokeMessage: response.message,
       });
-      debugger
     }
   };
-
 
   render() {
     let currentJokeContent = this.state.currentJoke.content;
@@ -62,21 +66,23 @@ class JokeManager extends Component {
                 </button>
               </div>
             ) : (
-                <div>
-                  <p data-cy="vote-message"> {this.state.voteMessage}</p>
-                </div>
-              )}
+              <div>
+                <p data-cy="vote-message"> {this.state.voteMessage}</p>
+              </div>
+            )}
             {this.props.authenticated && !this.state.jokeSaved ? (
               <div>
                 <button data-cy="save-joke-button" onClick={this.jokeSaved}>
                   Save Joke
-              </button>
+                </button>
               </div>
             ) : (
-                <div>
-                  <p data-cy="saved-joke-message"> {this.state.savedJokeMessage}</p>
-                </div>
-              )}
+              <div>
+                <p data-cy="saved-joke-message">
+                  {this.state.savedJokeMessage}
+                </p>
+              </div>
+            )}
           </div>
         )}
       </>
