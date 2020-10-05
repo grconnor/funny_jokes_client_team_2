@@ -1,13 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ewert&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.backgroundImage {
+  background-image: url('https://image.freepik.com/free-photo/3d-rendering-background-with-red-curtain-spotlight-festival-night-show-poster_42071-172.jpg');
+  background-size: 100% 100%;
+  ;
+  background-repeat: no-repeat;
+}
+
+p {
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.8em;
+}
+
+.title {
+  font-family: 'Ewert', cursive;
+  color: rgb(222, 225, 228);
+  font-size: 4em;
 }
