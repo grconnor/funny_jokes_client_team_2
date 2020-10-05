@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getJoke } from "../modules/joke";
+import { getJoke, saveJoke } from "../modules/joke";
 import { positiveVote } from "../modules/positiveVote";
 
 class JokeManager extends Component {
@@ -8,11 +8,18 @@ class JokeManager extends Component {
     displayJoke: false,
     voteSaved: false,
     voteMessage: "",
+    jokeSaved: "",
+    savedJokeMessage: "",
   };
 
   getRandomJoke = async () => {
     let result = await getJoke();
-    this.setState({ currentJoke: result, displayJoke: true, voteSaved: false });
+    this.setState({
+      currentJoke: result,
+      displayJoke: true,
+      voteSaved: false,
+      jokeSaved: false,
+    });
   };
 
   voteSaved = async () => {
@@ -22,6 +29,19 @@ class JokeManager extends Component {
         currentJoke: response.joke,
         voteSaved: true,
         voteMessage: response.message,
+      });
+    }
+  };
+
+  jokeSaved = async () => {
+    let response = await saveJoke(
+      this.state.currentJoke.id,
+      this.state.currentJoke.content
+    );
+    if (response !== false) {
+      this.setState({
+        jokeSaved: true,
+        savedJokeMessage: response.message,
       });
     }
   };
@@ -40,11 +60,28 @@ class JokeManager extends Component {
             <p>{currentJokeContent}</p>
             <p data-cy="upvote">upvotes: {currentJokeUpvote}</p>
             {this.props.authenticated && !this.state.voteSaved ? (
-              <button data-cy="vote-button" onClick={this.voteSaved}>
-                Vote +{" "}
-              </button>
+              <div>
+                <button data-cy="vote-button" onClick={this.voteSaved}>
+                  Vote +{" "}
+                </button>
+              </div>
             ) : (
-              <p data-cy="vote-message"> {this.state.voteMessage}</p>
+              <div>
+                <p data-cy="vote-message"> {this.state.voteMessage}</p>
+              </div>
+            )}
+            {this.props.authenticated && !this.state.jokeSaved ? (
+              <div>
+                <button data-cy="save-joke-button" onClick={this.jokeSaved}>
+                  Save Joke
+                </button>
+              </div>
+            ) : (
+              <div>
+                <p data-cy="saved-joke-message">
+                  {this.state.savedJokeMessage}
+                </p>
+              </div>
             )}
           </div>
         )}

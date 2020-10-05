@@ -5,4 +5,28 @@ const getJoke = async () => {
   return response.data.jokes;
 };
 
-export { getJoke };
+const saveJoke = async (joke_id, content) => {
+  let headers = sessionStorage.getItem("credentials");
+  headers = JSON.parse(headers);
+  headers = {
+    ...headers,
+    "Content-type": "application/json",
+    Accept: "application/json",
+  };
+  try {
+    let response = await axios.post(
+      "/jokes",
+      { joke_id, content },
+      {
+        headers: headers,
+      }
+    );
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    alert("Sorry, we were not able to save that joke!");
+    return false;
+  }
+};
+
+export { getJoke, saveJoke };
