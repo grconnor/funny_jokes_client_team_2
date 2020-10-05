@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getJoke, saveJoke } from "../modules/joke";
 import { positiveVote } from "../modules/positiveVote";
+import { Menu, Button, Container, Grid, Card } from "semantic-ui-react";
 
 class JokeManager extends Component {
   state = {
@@ -52,39 +53,59 @@ class JokeManager extends Component {
 
     return (
       <>
-        <button onClick={this.getRandomJoke} data-cy="joke">
-          Get the joke you need right now
-        </button>
-        {this.state.displayJoke && (
-          <div data-cy="random-joke">
-            <p>{currentJokeContent}</p>
-            <p data-cy="upvote">upvotes: {currentJokeUpvote}</p>
-            {this.props.authenticated && !this.state.voteSaved ? (
-              <div>
-                <button data-cy="vote-button" onClick={this.voteSaved}>
-                  Vote +{" "}
-                </button>
-              </div>
-            ) : (
-              <div>
-                <p data-cy="vote-message"> {this.state.voteMessage}</p>
-              </div>
-            )}
-            {this.props.authenticated && !this.state.jokeSaved ? (
-              <div>
-                <button data-cy="save-joke-button" onClick={this.jokeSaved}>
-                  Save Joke
-                </button>
-              </div>
-            ) : (
-              <div>
-                <p data-cy="saved-joke-message">
-                  {this.state.savedJokeMessage}
-                </p>
-              </div>
-            )}
-          </div>
-        )}
+        <Grid.Row style={{ width: "100%", height: "45%" }}>
+          {this.state.displayJoke && (
+            <div data-cy="random-joke">
+              <Container
+                textAlign="center"
+                floated="left"
+                style={{ width: "40%" }}
+              >
+                <p>{currentJokeContent}</p>
+                <p data-cy="upvote">upvotes: {currentJokeUpvote}</p>
+              </Container>
+              <Container textAlign="center">
+                {this.props.authenticated && !this.state.voteSaved ? (
+                  <Button
+                    basic
+                    color="green"
+                    data-cy="vote-button"
+                    onClick={this.voteSaved}
+                  >
+                    Vote +{" "}
+                  </Button>
+                ) : (
+                  <p data-cy="vote-message"> {this.state.voteMessage}</p>
+                )}
+                {this.props.authenticated && !this.state.jokeSaved ? (
+                  <Button
+                    basic
+                    color="red"
+                    data-cy="save-joke-button"
+                    onClick={this.jokeSaved}
+                  >
+                    Save Joke
+                  </Button>
+                ) : (
+                  <p data-cy="saved-joke-message">
+                    {this.state.savedJokeMessage}
+                  </p>
+                )}
+              </Container>
+            </div>
+          )}
+        </Grid.Row>
+
+        <Grid.Row style={{ height: "60%" }}>
+          <Button
+            color="yellow"
+            size="large"
+            onClick={this.getRandomJoke}
+            data-cy="joke"
+          >
+            Get the joke you need right now
+          </Button>
+        </Grid.Row>
       </>
     );
   }
