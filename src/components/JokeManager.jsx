@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getJoke, saveJoke } from "../modules/joke";
 import { positiveVote } from "../modules/positiveVote";
-import { Menu, Button, Container, Grid, Card } from "semantic-ui-react";
+import { Button, Container, Grid } from "semantic-ui-react";
 
 class JokeManager extends Component {
   state = {
@@ -56,13 +56,9 @@ class JokeManager extends Component {
         <Grid.Row style={{ width: "100%", height: "45%" }}>
           {this.state.displayJoke && (
             <div data-cy="random-joke">
-              <Container
-                textAlign="center"
-                floated="left"
-                style={{ width: "40%" }}
-              >
+              <Container textAlign="center" style={{ width: "45%" }}>
                 <p>{currentJokeContent}</p>
-                <p data-cy="upvote">upvotes: {currentJokeUpvote}</p>
+                <h3 data-cy="upvote">upvotes: {currentJokeUpvote}</h3>
               </Container>
               <Container textAlign="center">
                 {this.props.authenticated && !this.state.voteSaved ? (
@@ -75,7 +71,7 @@ class JokeManager extends Component {
                     Vote +{" "}
                   </Button>
                 ) : (
-                  <p data-cy="vote-message"> {this.state.voteMessage}</p>
+                  <h3 data-cy="vote-message"> {this.state.voteMessage}</h3>
                 )}
                 {this.props.authenticated && !this.state.jokeSaved ? (
                   <Button
@@ -87,9 +83,9 @@ class JokeManager extends Component {
                     Save Joke
                   </Button>
                 ) : (
-                  <p data-cy="saved-joke-message">
+                  <h3 data-cy="saved-joke-message">
                     {this.state.savedJokeMessage}
-                  </p>
+                  </h3>
                 )}
               </Container>
             </div>

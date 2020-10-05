@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import JokeManager from "./components/JokeManager";
 import LoginForm from "./components/LoginForm";
 import { authenticate } from "./modules/auth";
-import { Menu, Button, Grid, Container } from "semantic-ui-react";
+import { Menu, Button, Grid  } from "semantic-ui-react";
 
 class App extends Component {
   state = {
@@ -64,12 +64,12 @@ class App extends Component {
           </Menu.Menu>
         </Menu>
         <Grid style={{ height: "100vh" }} textAlign="center">
-          <Grid.Row style={{ height: "25%" }}>
-            <h1 data-cy="title" class="xxx">
+          <Grid.Row style={{ height: "24%" }}>
+            <h1 data-cy="title" class="title">
               Funny Jokes
             </h1>
           </Grid.Row>
-          <Grid.Row style={{ height: "75%" }}>
+          <Grid.Row style={{ height: "76%" }}>
             <JokeManager authenticated={this.state.authenticated} />
           </Grid.Row>
         </Grid>
