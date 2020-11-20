@@ -7,6 +7,7 @@
 [![GitHub Closed PR](https://img.shields.io/github/issues-pr-closed/grconnor/funny_jokes_client_team_2?color=blueviolet&style=flat-square)](https://github.com/grconnor/funny_jokes_client_team_2/pulls)
 
 # Funny Jokes
+## Midcourse Project Team 2
 - We were challenged with building whatever application came to mind that had a client UI which communicated with an API.
 
 - [User Client](https://github.com/grconnor/funny_jokes_client_team_2)
