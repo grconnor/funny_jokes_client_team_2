@@ -58,8 +58,11 @@ class JokeManager extends Component {
             <div data-cy="random-joke">
               <Container textAlign="center" style={{ width: "45%" }}>
                 <p>{currentJokeContent}</p>
-                <h3 data-cy="upvote">upvotes: {currentJokeUpvote}</h3>
+                <h3 data-cy="upvote">Upvotes:  {currentJokeUpvote}</h3>
               </Container>
+              <br>
+              </br>
+
               <Container textAlign="center">
                 {this.props.authenticated && !this.state.voteSaved ? (
                   <Button
@@ -68,10 +71,10 @@ class JokeManager extends Component {
                     data-cy="vote-button"
                     onClick={this.voteSaved}
                   >
-                    Vote +{" "}
+                    Upvote +{" "}
                   </Button>
                 ) : (
-                  <h3 data-cy="vote-message"> {this.state.voteMessage}</h3>
+                  <h3 id="signup-response" data-cy="vote-message"> {this.state.voteMessage}</h3>
                 )}
                 {this.props.authenticated && !this.state.jokeSaved ? (
                   <Button
@@ -88,18 +91,19 @@ class JokeManager extends Component {
                   </h3>
                 )}
               </Container>
+
             </div>
           )}
         </Grid.Row>
 
         <Grid.Row style={{ height: "60%" }}>
           <Button
-            color="yellow"
+            color="blue"
             size="large"
             onClick={this.getRandomJoke}
             data-cy="joke"
           >
-            Get the joke you need right now
+            Click to get a random joke!
           </Button>
         </Grid.Row>
       </>

@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const positiveVote = async (jokeId) => {
   let headers = sessionStorage.getItem("credentials");
   headers = JSON.parse(headers);

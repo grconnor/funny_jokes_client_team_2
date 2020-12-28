@@ -24,7 +24,7 @@ const saveJoke = async (joke_id, content) => {
     return response.data;
   } catch (err) {
     console.error(err);
-    alert("Sorry, we were not able to save that joke!");
+    alert("Sorry, something happened and we were not able to save that joke!");
     return false;
   }
 };

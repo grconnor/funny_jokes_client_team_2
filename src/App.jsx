@@ -66,7 +66,7 @@ class App extends Component {
         <Grid style={{ height: "100vh" }} textAlign="center">
           <Grid.Row style={{ height: "24%" }}>
             <h1 data-cy="title" class="title">
-              Funny Jokes
+              [ Your funny jokes ]
             </h1>
           </Grid.Row>
           <Grid.Row style={{ height: "76%" }}>
