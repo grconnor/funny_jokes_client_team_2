@@ -25,6 +25,11 @@
 React v.16.13.1 </br>
 **Testing framework:** Cypress
 
+## To-do:
+- Fix styling for "save joke" button.
+- 
+- 
+
 ## Getting started
 
 ### Dependencies
